@@ -1,20 +1,14 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template("index.html")
 
-@app.route('/contact', methods=['POST'])
-def contact():
-    name = request.form.get('name')
-    email = request.form.get('email')
-    message = request.form.get('message')
+@app.route('/about')
+def about():
+    return render_template("about.html")
 
-    print("New Message:", name, email, message)
-
-    return redirect(url_for('home'))
-
-if __name__ == '__main__':
-    app.run(debug=True)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
